@@ -1,10 +1,25 @@
 import './App.css';
-import PokemonSearch from './PokemonSearch';
+import { useEffect, useState } from 'react';
+import PokemonList from './PokemonList';
+import { fetchPokemon } from './services/fetch-utils';
 
 function App() {
+  const [pokemon, setPokemon] = useState([]);
+
+  useEffect(() => {
+    async function onLoad() {
+      const data = await fetchPokemon();
+
+      setPokemon(data.results);
+    }
+    onLoad();
+  }, []);
+
+
+
   return (
     <div className="App">
-      <PokemonSearch />
+      <PokemonList pokemon={pokemon} />
     </div>
   );
 }
