@@ -11,3 +11,10 @@ export async function fetchBusinesses(filter) {
 
   return data;
 }
+
+export async function fetchWeather(filter) {
+  const rawData = await fetch(`/.netlify/functions/weather?searchWeather=${filter}`);
+  const data = await rawData.json();
+
+  return data;
+}
