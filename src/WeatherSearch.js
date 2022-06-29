@@ -31,7 +31,7 @@ export default function WeatherSearch() {
   }
 
   return (
-    <div>
+    <div className='weather-list'> Weather Search
       <form onSubmit={handleSubmit}>
         <input value={searchWeather}
           onChange={(e) => setSearchWeather(e.target.value)}/>
