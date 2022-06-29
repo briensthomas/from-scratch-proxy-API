@@ -2,13 +2,17 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { fetchPokemon } from './services/fetch-utils';
 import PokemonList from './PokemonList';
+import PokemonSpinner from './PokemonSpinner';
 
 export default function PokemonSearch() {
   const [pokemon, setPokemon] = useState([]);
   const [searchPokemon, setSearchPokemon] = useState('');
+  const [loading, setLoading] = useState(false);
 
   async function onLoad() {
+    setLoading(true);
     const data = await fetchPokemon(searchPokemon);
+    setLoading(false);
 
     setPokemon(data.results);
   }
@@ -27,13 +31,17 @@ export default function PokemonSearch() {
   }
   
   return (
-    <div>PokemonSearch
+    <div className='pokemon-list'>PokemonSearch
       <form onSubmit={handlePokemonSubmit}>
         <input value={searchPokemon}
           onChange={(e) => setSearchPokemon(e.target.value)}/>
         <button>Search Pokemon</button>
       </form>
-      <PokemonList pokemon={pokemon}/>
+      {
+        loading
+          ? <PokemonSpinner />
+          : <PokemonList pokemon={pokemon}/>
+      }
     </div>
   );
 }

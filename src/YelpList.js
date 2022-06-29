@@ -12,4 +12,3 @@ export default function YelpList({ yelp }) {
     </div>
   );
 }
-{/* <a href={business.url}>{business.name}</a> */}
