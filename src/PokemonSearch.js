@@ -16,9 +16,10 @@ export default function PokemonSearch() {
   useEffect(() => {
 
     onLoad();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  async function handleSubmit(e) {
+  async function handlePokemonSubmit(e) {
     e.preventDefault();
 
     await onLoad();
@@ -27,7 +28,7 @@ export default function PokemonSearch() {
   
   return (
     <div>PokemonSearch
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handlePokemonSubmit}>
         <input value={searchPokemon}
           onChange={(e) => setSearchPokemon(e.target.value)}/>
         <button>Search Pokemon</button>
