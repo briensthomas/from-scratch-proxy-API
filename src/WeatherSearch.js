@@ -14,7 +14,7 @@ export default function WeatherSearch() {
     const data = await fetchWeather(searchWeather);
     setLoading(false);
 
-    setWeatherData(data);
+    setWeatherData(data.list[0].main);
   }
 
   useEffect(() => {

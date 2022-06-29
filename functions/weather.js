@@ -11,8 +11,16 @@ const headers = {
 exports.handler = async (event) => {
   try {
     const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${event.queryStringParameters.searchWeather}&limit=5&appid=${process.env.WEATHER_KEY}`);
+    
     const data = await response.json();
-    const json = JSON.stringify(data);
+    const lat = data[0].lat;
+    const lon = data[0].lon;
+
+    const something = await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.WEATHER_KEY}`);
+    const convert = await something.json();
+
+    const json = JSON.stringify(convert);
+
     
     return { 
       statusCode: 200, 
