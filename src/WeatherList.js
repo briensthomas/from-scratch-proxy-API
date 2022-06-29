@@ -1,11 +1,11 @@
 import React from 'react';
 
-export default function WeatherList({ weather }) {
+export default function WeatherList({ weatherData }) {
   return (
     <div>
       {
-        weather.map((rain, i) => <p key={rain.name + i + rain.lat}>
-          {rain.name}: {rain.lat}, {rain.lon}
+        weatherData.map((weather, i) => <p key={weather.name + i + weather.lat}>
+          {weather.name}: {weather.lat}, {weather.lon}
         </p>)
       }
     </div>

@@ -5,7 +5,7 @@ import WeatherList from './WeatherList';
 import WeatherSpinner from './WeatherSpinner';
 
 export default function WeatherSearch() {
-  const [weather, setWeather] = useState([]);
+  const [weatherData, setWeatherData] = useState([]);
   const [searchWeather, setSearchWeather] = useState('Portland, OR 97222');
   const [loading, setLoading] = useState(false);
 
@@ -14,7 +14,7 @@ export default function WeatherSearch() {
     const data = await fetchWeather(searchWeather);
     setLoading(false);
 
-    setWeather(data);
+    setWeatherData(data);
   }
 
   useEffect(() => {
@@ -40,7 +40,7 @@ export default function WeatherSearch() {
       {
         loading
           ? <WeatherSpinner />
-          : <WeatherList weather={weather}/>
+          : <WeatherList weatherData={weatherData}/>
       }
     </div>
   );
