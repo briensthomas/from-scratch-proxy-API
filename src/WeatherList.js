@@ -7,9 +7,9 @@ export default function WeatherList({
 
   return (
     <div>
-      <p>Current Temperature(K): convertToFahrenheit({temp}) </p>
-      <p>Low of the Day(K): {temp_min}</p>
-      <p>High of the Day(K): {temp_max}</p>
+      <p>Current Temperature: {temp}° F </p>
+      <p>Low of the Day: {temp_min}° F</p>
+      <p>High of the Day: {temp_max}° F</p>
       
     </div>
   );

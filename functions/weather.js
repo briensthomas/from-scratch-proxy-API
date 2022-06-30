@@ -16,7 +16,7 @@ exports.handler = async (event) => {
     const lat = data[0].lat;
     const lon = data[0].lon;
 
-    const something = await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.WEATHER_KEY}`);
+    const something = await fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${process.env.WEATHER_KEY}&units=imperial`);
     const convert = await something.json();
 
     const json = JSON.stringify(convert);
