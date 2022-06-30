@@ -8,9 +8,13 @@ const headers = {
 };
 
 
-exports.handler = async (event, context) => {
+exports.handler = async (event) => {
   try {
-    const response = await fetch('https://cat-fact.herokuapp.com/facts');
+    const response = await fetch(`https://api.yelp.com/v3/businesses/search?location=${event.queryStringParameters.searchYelp}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.YELP_KEY}`,
+      }
+    });
     const data = await response.json();
     const json = JSON.stringify(data);
     
